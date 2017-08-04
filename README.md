@@ -4,6 +4,11 @@
 
 A bookmarklet to prettify content on the page using [prettier][prettier]
 
+<blockquote>
+There needs to be a Chrome extension that runs Prettier on code snippets in Medium posts 🤔
+<cite>--@_matthamil</cite>
+</blockquote>
+
 ## Usage
 
 <!-- AUTO-GENERATED-CONTENT:START (CODE:src=./dist/bookmarklet.js) -->
