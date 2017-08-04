@@ -23,13 +23,8 @@ const tags = Array.from(document.querySelectorAll('pre'))
   });
 
 fetch(`${ENDPOINT}?url=${url}`, {
-  method: 'OPTIONS',
-  mode: 'cors',
-  credentials: 'include',
-  headers: {
-    'Access-Control-Allow-Origin': '*',
-    'Content-Type': 'application/json'
-  }
+  method: 'GET',
+  mode: 'cors'
 })
   .then(response => {
     if (!response.ok) {
