@@ -2,7 +2,7 @@
 
 **Note: this is not currently working due to some weird CORS issues. Stay tuned**
 
-A bookmarklet to prettify content on the page using [prettier][prettier]
+A bookmarklet to prettify content on the page using [prettier][prettier]. See also [prettier-lamda][prettier-lamda]
 
 <blockquote>
 There needs to be a Chrome extension that runs Prettier on code snippets in Medium posts 🤔
@@ -20,3 +20,4 @@ javascript:!function(){"use strict";var e=document.location.href,n=function(e){r
 <!-- AUTO-GENERATED-CONTENT:END -->
 
 [prettier]: https://github.com/prettier/prettier
+[prettier-lamda]: /dschau/prettier-lamda
