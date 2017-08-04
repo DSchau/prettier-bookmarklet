@@ -1,0 +1,23 @@
+{
+  "name": "prettier-bookmarlet",
+  "main": "dist/prettier.js",
+  "version": "1.0.0",
+  "description": "A simple bookmarklet to prettify (any) code snippets on a website",
+  "author": "Dustin Schau <dustinschau@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "prebuild": "npm run clean",
+    "build": "rollup --config rollup.config.js && node build/bookmarklet.js",
+    "clean": "del-cli \"dist/**/*\"",
+    "docs": "md-magic README.md"
+  },
+  "devDependencies": {
+    "babel-preset-env": "^1.6.0",
+    "del-cli": "^1.1.0",
+    "markdown-magic": "^0.1.17",
+    "mz": "^2.6.0",
+    "rollup": "^0.45.2",
+    "rollup-plugin-babel": "^2.7.1",
+    "rollup-plugin-uglify": "^2.0.1"
+  }
+}
