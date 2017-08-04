@@ -25,17 +25,18 @@ export default Promise.all(
     .map(block => {
       return fetch(ENDPOINT, {
         method: 'POST',
-        mode: 'cors'
+        mode: 'cors',
+        body: block.innerText
       })
         .then(response => {
           if (!response.ok) {
             throw new Error(response.status);
           }
-          return response.json();
+          return response.text();
         })
-        .then(({ prettier }) => {
-          block.innerText = prettier;
-          return prettier;
+        .then(prettified => {
+          block.innerText = prettified;
+          return prettified;
         })
     })
 )
