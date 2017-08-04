@@ -14,7 +14,7 @@ There needs to be a Chrome extension that runs Prettier on code snippets in Medi
 <!-- AUTO-GENERATED-CONTENT:START (CODE:src=./dist/bookmarklet.js) -->
 <!-- The below code snippet is automatically added from ./dist/bookmarklet.js -->
 ```js
-javascript:!function(){"use strict";var e=document.location.href,n=function(e){return Array.from(e.childNodes).some(function(e){return"CODE"===e.nodeName})},o=Array.from(document.querySelectorAll("pre")).map(function(e){if(n(e))for(var o=e.childNodes,t=0;t<o.length;t++)if("CODE"===o[t].nodeName)return o[t];return e});fetch("https://xu2gjdfgt7.execute-api.us-east-1.amazonaws.com/dev/prettier?url="+e,{method:"OPTIONS",mode:"cors",credentials:"include",headers:{"Access-Control-Allow-Origin":"*","Content-Type":"application/json"}}).then(function(e){return e.json()}).then(function(e){var n=e.blocks;n.length===o.length?o.forEach(function(e,o){e.innerText=n[o]}):console.warn("Uh-oh, something went wrong. Mismatch from the server generated code blocks vs. local code blocks")}).catch(function(e){return console.warn(e)})}();
+javascript:var prettierBookmarklet=function(){"use strict";var r=function(r){return"CODE"===r.nodeName},e=function(e){return Array.from(e.childNodes).some(r)},t=Array.from(document.querySelectorAll("pre")).map(function(t){if(e(t))for(var n=t.childNodes,o=0;o<n.length;o++)if(r(n[o]))return n[o];return t});return Promise.all(t.map(function(r){return fetch("https://xu2gjdfgt7.execute-api.us-east-1.amazonaws.com/dev/prettier",{method:"POST",mode:"cors"}).then(function(r){if(!r.ok)throw new Error(r.status);return r.json()}).then(function(e){var t=e.prettier;return r.innerText=t,t})}))}();
 ```
 <!-- AUTO-GENERATED-CONTENT:START (CODE:src=./dist/bookmarklet.js) -->
 <!-- AUTO-GENERATED-CONTENT:END -->
