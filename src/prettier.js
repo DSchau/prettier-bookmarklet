@@ -2,9 +2,11 @@ import { ENDPOINT } from './constants';
 
 const url = document.location.href;
 
+const isCodeBlock = node => node.nodeName === 'CODE';
+
 const containsCodeBlock = block => {
   const children = Array.from(block.childNodes);
-  return children.some(child => child.nodeName === 'CODE');
+  return children.some(isCodeBlock);
 };
 
 const tags = Array.from(document.querySelectorAll('pre'))
@@ -12,7 +14,7 @@ const tags = Array.from(document.querySelectorAll('pre'))
     if (containsCodeBlock(block)) {
       const nodes = block.childNodes;
       for (let i = 0; i < nodes.length; i++) {
-        if (nodes[i].nodeName === 'CODE') {
+        if (isCodeBlock(nodes[i])) {
           return nodes[i];
         }
       }
