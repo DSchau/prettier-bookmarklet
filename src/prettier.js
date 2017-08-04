@@ -1,7 +1,5 @@
 import { ENDPOINT } from './constants';
 
-const url = document.location.href;
-
 const isCodeBlock = node => node.nodeName === 'CODE';
 
 const containsCodeBlock = block => {
@@ -9,7 +7,7 @@ const containsCodeBlock = block => {
   return children.some(isCodeBlock);
 };
 
-const tags = Array.from(document.querySelectorAll('pre'))
+const blocks = Array.from(document.querySelectorAll('pre'))
   .map(block => {
     if (containsCodeBlock(block)) {
       const nodes = block.childNodes;
@@ -22,25 +20,22 @@ const tags = Array.from(document.querySelectorAll('pre'))
     return block;
   });
 
-fetch(`${ENDPOINT}?url=${url}`, {
-  method: 'GET',
-  mode: 'cors'
-})
-  .then(response => {
-    if (!response.ok) {
-      throw new Error(response.status);
-    }
-    return response.json();
-  })
-  .then(data => {
-    const { blocks } = data;
-    if (blocks.length === tags.length) {
-      tags
-        .forEach((tag, index) => {
-          tag.innerText = blocks[index];
+export default Promise.all(
+  blocks
+    .map(block => {
+      return fetch(ENDPOINT, {
+        method: 'POST',
+        mode: 'cors'
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(response.status);
+          }
+          return response.json();
         })
-    } else {
-      console.warn('Uh-oh, something went wrong. Mismatch from the server generated code blocks vs. local code blocks');
-    }
-  })
-  .catch(err => console.warn(err));
+        .then(({ prettier }) => {
+          block.innerText = prettier;
+          return prettier;
+        })
+    })
+)

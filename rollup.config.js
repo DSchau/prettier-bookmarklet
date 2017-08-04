@@ -8,5 +8,6 @@ export default {
     babel(),
     uglify()
   ],
-  format: 'iife'
+  format: 'iife',
+  moduleName: 'prettierBookmarklet'
 }
