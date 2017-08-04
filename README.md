@@ -1,5 +1,7 @@
 # prettier-bookmarklet
 
+**Note: this is not currently working due to some weird CORS issues. Stay tuned**
+
 A bookmarklet to prettify content on the page using [prettier][prettier]
 
 ## Usage
